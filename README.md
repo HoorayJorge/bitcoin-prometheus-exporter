@@ -1,14 +1,14 @@
 # Bitcoin Core Prometheus Exporter
 
-A [Prometheus] exporter for [Bitcoin Core] nodes written in python and packaged for running as a container.
+A [Prometheus] exporter for [Garlicoin Core] nodes written in python and packaged for running as a container.
 
 A rudimentary Grafana [dashboard] is available in the [`dashboard/bitcoin-grafana.json`](dashboard/bitcoin-grafana.json)
 file.
 
 The main script is a modified version of [`bitcoin-monitor.py`][source-gist], updated to remove the need for the
-`bitcoin-cli` binary, packaged into a [Docker image][docker-image], and expanded to export additional metrics.
+`bitcoin-cli` binary, packaged into a [Docker image][docker-image], expanded to export additional metrics, and rewritten for Garlicoin.
 
-[Bitcoin Core]: https://github.com/bitcoin/bitcoin
+[Bitcoin Core]: https://github.com/GarlicoinOrg/Garlicoin
 [Prometheus]: https://github.com/prometheus/prometheus
 [docker-image]: https://hub.docker.com/r/jvstein/bitcoin-prometheus-exporter
 
@@ -19,11 +19,11 @@ The main script is a modified version of [`bitcoin-monitor.py`][source-gist], up
 # Run the container
 ```
 docker run \
-    --name=bitcoin-exporter \
-    -p 9332:9332 \
-    -e BITCOIN_RPC_HOST=bitcoin-node \
-    -e BITCOIN_RPC_USER=alice \
-    -e BITCOIN_RPC_PASSWORD=DONT_USE_THIS_YOU_WILL_GET_ROBBED_8ak1gI25KFTvjovL3gAM967mies3E= \
+    --name=mainnet-garlicoin-exporter \
+    -p 9439:9439 \
+    -e GARLICOIN_RPC_HOST=bitcoin-node \
+    -e GARLICOIN_RPC_USER=alice \
+    -e GARLICOIN_RPC_PASSWORD=DONT_USE_THIS_YOU_WILL_GET_ROBBED_8ak1gI25KFTvjovL3gAM967mies3E= \
     jvstein/bitcoin-prometheus-exporter:v0.7.0
 ```
 
