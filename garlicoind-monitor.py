@@ -273,7 +273,7 @@ def refresh_metrics() -> None:
     nettotals = garlicoinrpc("getnettotals")
     #rpcinfo = garlicoinrpc("getrpcinfo")
     txstats = garlicoinrpc("getchaintxstats")
-    latest_blockstats = getblock(str(blockchaininfo["bestblockhash"]), 2)
+    latest_blockstats = getblock(str(blockchaininfo["bestblockhash"]), 1)
 
     banned = garlicoinrpc("listbanned")
 
