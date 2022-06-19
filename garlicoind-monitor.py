@@ -271,7 +271,7 @@ def refresh_metrics() -> None:
     chaintips = len(garlicoinrpc("getchaintips"))
     mempool = garlicoinrpc("getmempoolinfo")
     nettotals = garlicoinrpc("getnettotals")
-    rpcinfo = garlicoinrpc("getrpcinfo")
+    #rpcinfo = garlicoinrpc("getrpcinfo")
     txstats = garlicoinrpc("getchaintxstats")
     latest_blockstats = getblockstats(str(blockchaininfo["bestblockhash"]))
 
@@ -339,7 +339,7 @@ def refresh_metrics() -> None:
         GARLICOIN_LATEST_BLOCK_FEE.set(latest_blockstats["totalfee"] / SATS_PER_COIN)
 
     # Subtract one because we don't want to count the "getrpcinfo" call itself
-    GARLICOIN_RPC_ACTIVE.set(len(rpcinfo["active_commands"]) - 1)
+    #GARLICOIN_RPC_ACTIVE.set(len(rpcinfo["active_commands"]) - 1)
 
 
 def sigterm_handler(signal, frame) -> None:
