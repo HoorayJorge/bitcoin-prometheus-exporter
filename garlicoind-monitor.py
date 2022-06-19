@@ -203,12 +203,12 @@ def garlicoinrpc(*args) -> RpcResult:
 
 
 @lru_cache(maxsize=1)
-def getblockstats(block_hash: str):
+def getblock(block_hash: str, verbosity: int):
     try:
         block = garlicoinrpc(
-            "getblockstats",
+            "getblock",
             block_hash,
-            ["total_size", "total_weight", "totalfee", "txs", "height", "ins", "outs", "total_out"],
+            verbosity,
         )
     except Exception:
         logger.exception("Failed to retrieve block " + block_hash + " statistics from garlicoind.")
@@ -273,7 +273,7 @@ def refresh_metrics() -> None:
     nettotals = garlicoinrpc("getnettotals")
     #rpcinfo = garlicoinrpc("getrpcinfo")
     txstats = garlicoinrpc("getchaintxstats")
-    latest_blockstats = getblockstats(str(blockchaininfo["bestblockhash"]))
+    latest_blockstats = getblock(str(blockchaininfo["bestblockhash"]), 2)
 
     banned = garlicoinrpc("listbanned")
 
