@@ -330,7 +330,7 @@ def refresh_metrics() -> None:
 
     if latest_blockstats is not None:
         GARLICOIN_LATEST_BLOCK_SIZE.set(latest_blockstats["size"])
-        GARLICOIN_LATEST_BLOCK_TXS.set(latest_blockstats["nTx"])
+        GARLICOIN_LATEST_BLOCK_TXS.set(len(latest_blockstats["tx"]))
         GARLICOIN_LATEST_BLOCK_HEIGHT.set(latest_blockstats["height"])
         GARLICOIN_LATEST_BLOCK_WEIGHT.set(latest_blockstats["weight"])
         #GARLICOIN_LATEST_BLOCK_INPUTS.set(latest_blockstats["ins"])
