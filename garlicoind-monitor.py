@@ -32,7 +32,7 @@ from wsgiref.simple_server import make_server
 
 import riprova
 
-from garlicoin.rpc import JSONRPCError, InWarmupError, Proxy
+from bitcoin.rpc import JSONRPCError, InWarmupError, Proxy
 from prometheus_client import make_wsgi_app, Gauge, Counter
 
 
