@@ -1,7 +1,7 @@
 FROM docker.io/library/python:3.8-alpine3.15
 
-LABEL org.opencontainers.image.title "bitcoin-prometheus-exporter"
-LABEL org.opencontainers.image.description "Prometheus exporter for bitcoin nodes"
+LABEL org.opencontainers.image.title "garlicoin-prometheus-exporter"
+LABEL org.opencontainers.image.description "Prometheus exporter for garlicoin nodes"
 
 # Dependencies for python-bitcoinlib and sanity check.
 RUN apk --no-cache add \
@@ -16,8 +16,8 @@ RUN pip install --no-cache-dir \
         riprova
 
 RUN mkdir -p /monitor
-ADD ./bitcoind-monitor.py /monitor
+ADD ./garlicoind-monitor.py /monitor
 
 USER nobody
 
-CMD ["/monitor/bitcoind-monitor.py"]
+CMD ["/monitor/garlicoind-monitor.py"]
