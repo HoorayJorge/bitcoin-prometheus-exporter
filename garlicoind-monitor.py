@@ -329,14 +329,14 @@ def refresh_metrics() -> None:
     GARLICOIN_TOTAL_BYTES_SENT.set(nettotals["totalbytessent"])
 
     if latest_blockstats is not None:
-        GARLICOIN_LATEST_BLOCK_SIZE.set(latest_blockstats["total_size"])
-        GARLICOIN_LATEST_BLOCK_TXS.set(latest_blockstats["txs"])
+        GARLICOIN_LATEST_BLOCK_SIZE.set(latest_blockstats["size"])
+        GARLICOIN_LATEST_BLOCK_TXS.set(latest_blockstats["nTx"])
         GARLICOIN_LATEST_BLOCK_HEIGHT.set(latest_blockstats["height"])
-        GARLICOIN_LATEST_BLOCK_WEIGHT.set(latest_blockstats["total_weight"])
-        GARLICOIN_LATEST_BLOCK_INPUTS.set(latest_blockstats["ins"])
-        GARLICOIN_LATEST_BLOCK_OUTPUTS.set(latest_blockstats["outs"])
-        GARLICOIN_LATEST_BLOCK_VALUE.set(latest_blockstats["total_out"] / SATS_PER_COIN)
-        GARLICOIN_LATEST_BLOCK_FEE.set(latest_blockstats["totalfee"] / SATS_PER_COIN)
+        GARLICOIN_LATEST_BLOCK_WEIGHT.set(latest_blockstats["weight"])
+        #GARLICOIN_LATEST_BLOCK_INPUTS.set(latest_blockstats["ins"])
+        #GARLICOIN_LATEST_BLOCK_OUTPUTS.set(latest_blockstats["outs"])
+        #GARLICOIN_LATEST_BLOCK_VALUE.set(latest_blockstats["total_out"] / SATS_PER_COIN)
+        #GARLICOIN_LATEST_BLOCK_FEE.set(latest_blockstats["totalfee"] / SATS_PER_COIN)
 
     # Subtract one because we don't want to count the "getrpcinfo" call itself
     #GARLICOIN_RPC_ACTIVE.set(len(rpcinfo["active_commands"]) - 1)
