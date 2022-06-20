@@ -281,9 +281,9 @@ def refresh_metrics() -> None:
     i = 0
 
     for peer in peers[0]:
-        if (peer[i] == True):
+        if (peer[i]['inbound'] == True):
             peers_in = peers_in + 1
-        if (peer[i] == False):
+        if (peer[i]['inbound'] == False):
             peers_out = peers_out + 1
         i = i + 1
 
