@@ -278,12 +278,14 @@ def refresh_metrics() -> None:
 
     peers_in = 0
     peers_out = 0
+    i = 0
 
     for peer in peers[0]:
-        if (peer['inbound'] == True):
+        if (peer[i] == True):
             peers_in = peers_in + 1
-        if (peer['inbound]'] == False):
+        if (peer[i] == False):
             peers_out = peers_out + 1
+        i = i + 1
 
 
     banned = garlicoinrpc("listbanned")
