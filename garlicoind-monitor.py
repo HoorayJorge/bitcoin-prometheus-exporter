@@ -274,16 +274,25 @@ def refresh_metrics() -> None:
     #rpcinfo = garlicoinrpc("getrpcinfo")
     txstats = garlicoinrpc("getchaintxstats")
     latest_blockstats = getblock(str(blockchaininfo["bestblockhash"]), 1)
+    peers = garlicoinrpc("getpeerinfo")
+
+    peers_in = 0
+    peers_out = 0
+
+    for peer in peers['result']:
+        if (peer['inbound'] == True):
+            peers_in = peers_in + 1
+        if (peer['inbound]'] == False):
+            peers_out = peers_out + 1
+
 
     banned = garlicoinrpc("listbanned")
 
     GARLICOIN_UPTIME.set(uptime)
     GARLICOIN_BLOCKS.set(blockchaininfo["blocks"])
     GARLICOIN_PEERS.set(networkinfo["connections"])
-    if "connections_in" in networkinfo:
-        GARLICOIN_CONN_IN.set(networkinfo["connections_in"])
-    if "connections_out" in networkinfo:
-        GARLICOIN_CONN_OUT.set(networkinfo["connections_out"])
+    GARLICOIN_CONN_IN.set(peers_in)
+    GARLICOIN_CONN_OUT.set(peers_out)
     GARLICOIN_DIFFICULTY.set(blockchaininfo["difficulty"])
 
     GARLICOIN_SERVER_VERSION.set(networkinfo["version"])
