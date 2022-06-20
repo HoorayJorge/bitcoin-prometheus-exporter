@@ -276,6 +276,9 @@ def refresh_metrics() -> None:
     latest_blockstats = getblock(str(blockchaininfo["bestblockhash"]), 1)
     peers = garlicoinrpc("getpeerinfo")
 
+    peers_in = 0
+    peers_out = 0
+
     for peer in peers:
         if (peer['inbound'] == True):
             peers_in = peers_in + 1
