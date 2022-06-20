@@ -276,17 +276,11 @@ def refresh_metrics() -> None:
     latest_blockstats = getblock(str(blockchaininfo["bestblockhash"]), 1)
     peers = garlicoinrpc("getpeerinfo")
 
-    peers_in = 0
-    peers_out = 0
-    i = 0
-
-    for peer in peers[0]:
-        #if (peer[i]['inbound'] == True):
-         #   peers_in = peers_in + 1
-        #if (peer[i]['inbound'] == False):
-         #   peers_out = peers_out + 1
-        #i = i + 1
-        logging.debug(peer)
+    for peer in peers:
+        if (peer['inbound'] == True):
+            peers_in = peers_in + 1
+        if (peer['inbound'] == False):
+            peers_out = peers_out +1
 
     banned = garlicoinrpc("listbanned")
 
