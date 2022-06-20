@@ -279,7 +279,7 @@ def refresh_metrics() -> None:
     peers_in = 0
     peers_out = 0
 
-    for peer in peers['result']:
+    for peer in peers[0]:
         if (peer['inbound'] == True):
             peers_in = peers_in + 1
         if (peer['inbound]'] == False):
